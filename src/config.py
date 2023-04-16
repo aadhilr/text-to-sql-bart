@@ -11,10 +11,10 @@ def read_arguments_train():
     parser.add_argument('--data_set', default='spider', type=str)
 
     # encoder configuration
-    parser.add_argument('--encoder_pretrained_model', default='bert-base-uncased', type=str)
+    parser.add_argument('--encoder_pretrained_model', default='facebook/bart-base', type=str)
     parser.add_argument('--max_seq_length', default=512, type=int)
 
-    parser.add_argument('--num_epochs', default=10.0, type=float)
+    parser.add_argument('--num_epochs', default=10, type=int)
     parser.add_argument('--lr_transformer', default=2e-5, type=float)
 
     args = parser.parse_args()
@@ -34,7 +34,7 @@ def read_arguments_evaluation():
     parser.add_argument('--batch_size', default=4, type=int)
     parser.add_argument('--data_set', default='spider', type=str)
 
-    parser.add_argument('--encoder_pretrained_model', default='bert-base-uncased', type=str)
+    parser.add_argument('--encoder_pretrained_model', default='facebook/bart-base', type=str)
     parser.add_argument('--max_seq_length', default=512, type=int)
 
     parser.add_argument('--dropout', default=0.3, type=float, help='dropout rate')

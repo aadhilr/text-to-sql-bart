@@ -1,5 +1,6 @@
 from typing import List
 import torch
+from transformers import  BartTokenizer
 
 
 class SpiderDataset(torch.utils.data.Dataset):

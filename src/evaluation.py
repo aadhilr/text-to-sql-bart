@@ -12,13 +12,13 @@ def evaluate(model, tokenizer, test_loader):
     generated_sql = []
     gold_sql = []
     for batch in test_loader:
-        input_ids, attention_mask, decoder_input_ids, decoder_attention_mask, labels = batch
+        input_ids, attention_mask, decoder_input_ids, decoder_attention_mask = batch
         output = model.generate(input_ids=input_ids,
                                      attention_mask=attention_mask,
                                      decoder_start_token_id=model.bart.config.eos_token_id,
                                      max_length=512)
         generated_sql += tokenizer.batch_decode(output, skip_special_tokens=True)
-        gold_sql += tokenizer.batch_decode(labels, skip_special_tokens=True)
+        gold_sql += tokenizer.batch_decode(decoder_input_ids, skip_special_tokens=True)
 
     with open('generated_sql.txt', 'w') as f:
         f.write('\n'.join(generated_sql))
